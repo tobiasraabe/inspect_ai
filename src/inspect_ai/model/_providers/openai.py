@@ -302,6 +302,8 @@ class OpenAIAPI(ModelAPI):
         ):
             params["reasoning_effort"] = config.reasoning_effort
 
+        if config.response_format is not None:
+            params["response_format"] = config.response_format
         return params
 
     # convert some well known bad request errors into ModelOutput
