@@ -34,7 +34,7 @@ INSPECT_EVAL_MODEL=google/gemini-1.5-pro
 
 ## Generation Config
 
-There are a variety of configuration options that affect the behaviour of model generation. There are options which affect the generated tokens (`temperature`, `top_p`, etc.) as well as the connection to model providers (`timeout`, `max_retries`, etc.)
+There are a variety of configuration options that affect the behaviour of model generation. There are options which affect the generated tokens (`temperature`, `top_p`, `response_format`, etc.) as well as the connection to model providers (`timeout`, `max_retries`, etc.)
 
 You can specify generation options either on the command line or in direct calls to `eval()`. For example:
 
@@ -77,5 +77,6 @@ By default, Inspect uses a `max_connections` value of 10. You can increase this 
 - [Multimodal](multimodal.qmd) describes the APIs available for creating multimodal evaluations (including images, audio, and video).
 
 - [Reasoning](reasoning.qmd) documents the additional options and data available for reasoning models.
- 
 
+
+If you want to support another model hosting service or local model source, you can add a custom model API. See the documentation on [Model API Extensions](extensions.qmd#sec-model-api-extensions) for additional details.
