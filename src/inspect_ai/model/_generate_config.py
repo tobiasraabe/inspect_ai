@@ -1,6 +1,6 @@
 from contextvars import ContextVar
 from copy import deepcopy
-from typing import Literal, Union
+from typing import Any, Literal, Union
 
 from pydantic import BaseModel, Field
 from typing_extensions import TypedDict
@@ -78,7 +78,7 @@ class GenerateConfigArgs(TypedDict, total=False):
     reasoning_history: bool | None
     """Include reasoning in chat message history sent to generate."""
 
-    response_format: dict[str, str] | None
+    response_format: dict[str, Any] | None
     """Specifying a format for the model response, e.g. {"type":"json_object"} """
 
 
@@ -154,7 +154,7 @@ class GenerateConfig(BaseModel):
     reasoning_history: bool | None = Field(default=None)
     """Include reasoning in chat message history sent to generate."""
 
-    response_format: dict[str, str] | None = Field(default=None)
+    response_format: dict[str, Any] | None = Field(default=None)
     """Specifying a format for the model response, e.g. {"type":"json_object"} """
 
     def merge(

@@ -200,9 +200,14 @@ class OpenAIAPI(ModelAPI):
 
         try:
             # generate completion
-            completion: ChatCompletion = await self.client.chat.completions.create(
-                **request
-            )
+            if config.response_format and "json_schema" in config.response_format:
+                completion: ChatCompletion = (
+                    await self.client.beta.chat.completions.parse(**request)
+                )
+            else:
+                completion: ChatCompletion = await self.client.chat.completions.create(
+                    **request
+                )
 
             # save response for model_call
             response = completion.model_dump()
